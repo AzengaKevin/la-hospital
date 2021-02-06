@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -20,6 +20,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'phone',
+        'gender',
+        'contacts'
     ];
 
     /**
@@ -40,4 +43,32 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Available User Types
+     * 
+     * @return array of the options
+     */
+    public static function types() : array
+    {
+        return ['doctor', 'patient'];
+    }
+
+    /**
+     * Get all the available options
+     * 
+     * @return array of user gender options
+     */
+    public static function genderOptions() : array
+    {
+        return ['Male', 'Female', 'Other'];
+    }
+
+    /**
+     * Making the user entity inheritable
+     */
+    public function authenticable()
+    {
+        return $this->morphTo();
+    }
 }
