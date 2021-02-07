@@ -7,6 +7,9 @@ use App\Models\Doctor;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Events\Registered;
+use App\Providers\RouteServiceProvider;
 
 class RegistrationController extends Controller
 {
@@ -25,6 +28,7 @@ class RegistrationController extends Controller
      */
     public function store(Request $request)
     {
+
         $data = $request->validate([
             'type' => ['bail', 'required', Rule::in(User::types())],
             'user.name' => ['bail', 'required', 'max:255', 'string'],
@@ -43,7 +47,15 @@ class RegistrationController extends Controller
                 Rule::requiredIf($request->type == 'patient')
             ]
         ]);
+        
+        //Create the doctor
+        $doctor = Doctor::create($data['doctor']);
 
-        dd($data);
+        //Create the user part of the doctor and authenticate
+        Auth::login($user = $doctor->user()->create($data['user']));
+
+        event(new Registered($user));
+
+        return redirect()->route(RouteServiceProvider::HOME);
     }
 }
