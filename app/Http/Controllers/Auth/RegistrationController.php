@@ -49,6 +49,9 @@ class RegistrationController extends Controller
             ]
         ]);
 
+        //Hash the password
+        $data['user']['password'] = bcrypt($data['user']['password']);
+
         if (array_key_exists('doctor', $data)) {
             //Create the doctor
             $doctor = Doctor::create($data['doctor']);

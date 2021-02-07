@@ -14,7 +14,8 @@
 @section('content')
 
 <div class="min-h-screen bg-light d-flex align-items-center">
-    <form class="form-signup text-center">
+    <form class="form-signup text-center" action="{{ route('login') }}" method="POST" novalidate>
+        @csrf
 
         <div class="mb-3">
             <a href="{{ route('home') }}">
@@ -22,18 +23,31 @@
             </a>
             <div>
                 <h1 class="h3 fw-normal">Please sign in</h1>
-                <div><span class="fw-bold">or</span> <a class="ms-1" href="{{ route('register') }}">Sign up Here</a></div>
+                <div><span class="fw-bold">or</span> <a class="ms-1" href="{{ route('register') }}">Sign up Here</a>
+                </div>
             </div>
         </div>
 
-        <div>
-            <label for="inputEmail" class="visually-hidden">Email address</label>
-            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <div class="text-start">
+            <label for="email" class="visually-hidden">Email address</label>
+            <input type="email" id="email" name="email" class="form-control @error('email') is-invalid @enderror"
+                placeholder="Email address" value="{{ old('email') }}" required autofocus>
+            @error('email')
+            <span class="invalid-feedback">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
         </div>
 
-        <div class="mt-2">
-            <label for="inputPassword" class="visually-hidden">Password</label>
-            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <div class="mt-2 text-start">
+            <label for="password" class="visually-hidden">Password</label>
+            <input type="password" id="password" name="password"
+                class="form-control @error('password') is-invalid @enderror" placeholder="Password" required>
+            @error('password')
+            <span class="invalid-feedback">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
         </div>
         <div class="checkbox mb-3">
             <label>

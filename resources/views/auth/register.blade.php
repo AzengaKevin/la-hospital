@@ -138,7 +138,7 @@
         </div>
 
         <div class="mt-3">
-            <button class="w-100 btn btn-lg btn-primary">Sign in</button>
+            <button class="w-100 btn btn-lg btn-primary">Sign Up</button>
         </div>
         <p class="mt-5 mb-3 text-muted">&copy; All rights reserved 2021</p>
     </form>
