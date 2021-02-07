@@ -28,12 +28,17 @@
                         <a class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}" href="#">Contact
                             US</a>
                     </li>
+                    
                 </ul>
 
                 <ul class="navbar-nav ms-auto mb-2 mb-md-0">
                     @if (Route::has('login'))
                     @auth
                     <a class="btn btn-primary mb-2 mb-md-0" href="{{ route('home') }}">Dashboard</a>
+                    <form class="ms-0 ms-md-3" action="{{ route('logout') }}" method="post">
+                        @csrf
+                        <button class="btn btn-danger">Logout</button>
+                    </form>
                     @else
 
                     <a href="{{ route('login') }}" class="btn btn-info mb-2 mb-md-0">Login</a>

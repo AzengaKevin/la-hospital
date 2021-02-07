@@ -109,11 +109,12 @@
 
         <div x-show="userType == 'doctor'" class="mt-2 text-start">
             <label for="speciality" class="form-label fw-bold">Speciality</label>
-            <select id="speciality" class="form-select @error('doctor.speciality') is-invalid @enderror" name="doctor[speciality]"
-                x-bind:disabled="userType != 'doctor'">
+            <select id="speciality" class="form-select @error('doctor.speciality') is-invalid @enderror"
+                name="doctor[speciality]" x-bind:disabled="userType != 'doctor'">
                 <option value="">Select Speciality...</option>
                 @foreach (\App\Models\Doctor::specialityOptions() as $item)
-                <option value="{{ $item }}" {{ old('doctor.speciality') == $item ? 'selected' : '' }}>{{ $item }}</option>
+                <option value="{{ $item }}" {{ old('doctor.speciality') == $item ? 'selected' : '' }}>{{ $item }}
+                </option>
                 @endforeach
             </select>
             @error('doctor.speciality')
@@ -125,10 +126,11 @@
 
         <div x-show="userType == 'patient'" class="text-start mt-2">
             <label class="fw-bold form-label" for="dob">Date Of Birth</label>
-            <input type="date" id="dob" name="dob" class="form-control @error('dob') is-invalid @enderror"
-                x-bind:disabled="userType != 'patient'" placeholder="Date Of Birth" value="{{ old('dob') }}">
+            <input type="date" id="dob" name="patient[dob]"
+                class="form-control @error('patient.dob') is-invalid @enderror" x-bind:disabled="userType != 'patient'"
+                placeholder="Date Of Birth" value="{{ old('patient.dob') }}">
 
-            @error('dob')
+            @error('patient.dob')
             <span class="invalid-feedback">
                 <strong>{{ $message }}</strong>
             </span>

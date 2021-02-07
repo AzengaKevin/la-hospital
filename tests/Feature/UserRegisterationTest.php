@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use App\Models\User;
 use App\Models\Doctor;
+use App\Models\Patient;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -52,6 +53,34 @@ class UserRegisterationTest extends TestCase
         $this->assertAuthenticated();
         $response->assertRedirect(route('home'));
         
+    }
+
+    public function test_a_patient_can_register_successfully()
+    {
+        $this->withoutExceptionHandling();
+
+        // Arrange
+        $userData = User::factory()->make()->toArray();
+        unset($userData['email_verified_at']);
+        array_values($userData);
+        $userData['password'] = bcrypt('pa$$word');
+
+        $patientData = Patient::factory()->make()->toArray();
+
+        //Act
+        $response = $this->post(route('register'), [
+            'user' => $userData,
+            'patient' => $patientData,
+            'type' => 'patient'
+        ]);
+
+        $this->assertEquals(1, Patient::count());
+
+        $this->assertNotNull(Patient::first()->user);
+
+        //Assert
+        $this->assertAuthenticated();
+        $response->assertRedirect(route('home'));
     }
 
 }

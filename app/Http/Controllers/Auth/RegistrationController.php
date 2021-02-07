@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
 use App\Models\Doctor;
+use App\Models\Patient;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
@@ -47,14 +48,27 @@ class RegistrationController extends Controller
                 Rule::requiredIf($request->type == 'patient')
             ]
         ]);
+
+        if (array_key_exists('doctor', $data)) {
+            //Create the doctor
+            $doctor = Doctor::create($data['doctor']);
+    
+            //Create the user part of the doctor and authenticate
+            Auth::login($user = $doctor->user()->create($data['user']));
+    
+            event(new Registered($user));
+        }
+
+        if (array_key_exists('patient', $data)) {
+            //Create the doctor
+            $patient = Patient::create($data['patient']);
+    
+            //Create the user part of the doctor and authenticate
+            Auth::login($user = $patient->user()->create($data['user']));
+    
+            event(new Registered($user));
+        }
         
-        //Create the doctor
-        $doctor = Doctor::create($data['doctor']);
-
-        //Create the user part of the doctor and authenticate
-        Auth::login($user = $doctor->user()->create($data['user']));
-
-        event(new Registered($user));
 
         return redirect()->route(RouteServiceProvider::HOME);
     }

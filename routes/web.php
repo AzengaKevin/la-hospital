@@ -17,5 +17,7 @@ Route::get('/', fn () => view('welcome'))->name('home');
 
 Route::get('register', 'Auth\RegistrationController@create')->name('register');
 Route::post('register', 'Auth\RegistrationController@store')->name('register');
+
 Route::get('login', 'Auth\AuthenticatedSessionController@create')->name('login');
+Route::post('logout', 'Auth\AuthenticatedSessionController@destroy')->name('logout');
 
