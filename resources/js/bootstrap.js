@@ -11,7 +11,11 @@ window.axios = require('axios');
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 try {
+
     require('bootstrap');
+    
+    require('alpinejs');
+
 } catch (error) {
     
 }
