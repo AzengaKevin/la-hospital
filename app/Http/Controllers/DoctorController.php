@@ -12,7 +12,9 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        $doctors = Doctor::all();
+        $doctors = Doctor::with('user')->paginate();
+
+        return view('doctors.index', compact('doctors'));
     }
 
     /**
@@ -21,6 +23,7 @@ class DoctorController extends Controller
     public function show(Doctor $doctor)
     {
         $doctor->load('user');
+
     }
 
 }
