@@ -10729,3 +10729,12 @@ textarea.form-control-lg {
 .min-h-screen {
   min-height: 100vh;
 }
+
+.m-nav {
+  margin-top: 75px;
+}
+
+.object-fit {
+  -o-object-fit: cover;
+     object-fit: cover;
+}

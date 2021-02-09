@@ -15,6 +15,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn () => view('welcome'))->name('home');
 
+/*
+|--------------------------------------------------------------------------
+| Auth Routes
+|--------------------------------------------------------------------------
+| 
+| Authentication and registration routes
+|
+*/
+
 Route::get('register', 'Auth\RegistrationController@create')->name('register');
 Route::post('register', 'Auth\RegistrationController@store')->name('register');
 
@@ -22,3 +31,14 @@ Route::get('login', 'Auth\AuthenticatedSessionController@create')->name('login')
 Route::post('login', 'Auth\AuthenticatedSessionController@store')->name('login');
 Route::post('logout', 'Auth\AuthenticatedSessionController@destroy')->name('logout');
 
+/*
+|--------------------------------------------------------------------------
+| Pages Routes
+|--------------------------------------------------------------------------
+| 
+| Frontend static pages routes
+|
+*/
+
+Route::get('about', 'PagesController@about')->name('about');
+Route::get('contact', 'PagesController@contact')->name('contact');

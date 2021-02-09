@@ -24,7 +24,7 @@
     @stack('styles')
 </head>
 
-<body class="antialiased">
+<body class="antialiased min-h-screen">
     @yield('content')
 </body>
 
