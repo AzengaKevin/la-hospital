@@ -19,6 +19,7 @@
         "sass-loader": "^8.0.2"
     },
     "dependencies": {
+        "@fortawesome/fontawesome-free": "^5.15.2",
         "@popperjs/core": "^2.6.0",
         "alpinejs": "^2.8.0",
         "bootstrap": "^5.0.0-beta1"
