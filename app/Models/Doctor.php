@@ -35,4 +35,12 @@ class Doctor extends Model
     {
         return $this->morphOne(User::class, 'authenticable');
     }
+
+    /**
+     * Doctor Requests Relationship M : N
+     */
+    public function requests()
+    {
+        return $this->hasMany(Request::class);
+    }
 }

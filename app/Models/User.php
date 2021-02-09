@@ -71,4 +71,12 @@ class User extends Authenticatable
     {
         return $this->morphTo();
     }
+
+    /**
+     * User Requests Relationship
+     */
+    public function requests()
+    {
+        return $this->hasMany(Request::class);
+    }
 }

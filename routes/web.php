@@ -39,6 +39,9 @@ Route::post('logout', 'Auth\AuthenticatedSessionController@destroy')->name('logo
 | Frontend static pages routes
 |
 */
-
 Route::get('about', 'PagesController@about')->name('about');
 Route::get('contact', 'PagesController@contact')->name('contact');
+Route::resource('doctors', 'DoctorController')
+    ->only('index', 'show');
+Route::resource('requests', 'RequestController')
+    ->only('index', 'create', 'store');

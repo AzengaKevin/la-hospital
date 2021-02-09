@@ -22,27 +22,39 @@
                             href="{{ route('home') }}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('about') ? 'active' : '' }}" href="{{ route('about') }}">About</a>
+                        <a class="nav-link {{ request()->routeIs('about') ? 'active' : '' }}"
+                            href="{{ route('about') }}">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}" href="{{ route('contact') }}">Contact
-                            US</a>
+                        <a class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}"
+                            href="{{ route('contact') }}">Contact
+                            Us</a>
                     </li>
-                    
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('doctors.index') ? 'active' : '' }}"
+                            href="{{ route('doctors.index') }}">Doctors</a>
+                    </li>
+
                 </ul>
 
                 <ul class="navbar-nav ms-auto mb-2 mb-md-0">
+
                     @if (Route::has('login'))
                     @auth
-                    <a class="btn btn-primary mb-2 mb-md-0" href="{{ route('home') }}">Dashboard</a>
-                    <form class="ms-0 ms-md-3" action="{{ route('logout') }}" method="post">
-                        @csrf
-                        <button class="btn btn-danger">Logout</button>
-                    </form>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ Auth::user()->name }}
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="{{ route('home') }}">Dashboard</a></li>
+                            <li><a class="dropdown-item" href="{{ route('requests.index') }}">Requests</a></li>
+                            <li><a class="dropdown-item" role="button" href="#" data-bs-toggle="modal"
+                                    data-bs-target="#logout-modal">Logout</a></li>
+                        </ul>
+                    </li>
                     @else
-
                     <a href="{{ route('login') }}" class="btn btn-info mb-2 mb-md-0">Login</a>
-
                     @if (Route::has('register'))
                     <a href="{{ route('register') }}" class="btn btn-secondary mb-2 mb-md-0 ms-0 ms-md-2">Register</a>
                     @endif
@@ -56,4 +68,5 @@
 <div>
     @yield('main')
 </div>
+<x-modals.logout />
 @endsection
