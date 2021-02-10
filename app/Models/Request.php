@@ -27,4 +27,12 @@ class Request extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    /**
+     * Request Response Relationship 1 : M
+     */
+    public function response()
+    {
+        return $this->hasMany(Response::class);
+    }
 }
