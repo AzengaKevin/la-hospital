@@ -25,6 +25,6 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('act-as-a-doctor', fn ($user) => $user->authenticable_type === 'App\Models\Doctor');
     }
 }

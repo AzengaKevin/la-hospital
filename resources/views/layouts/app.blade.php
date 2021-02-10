@@ -46,9 +46,10 @@
                             data-bs-toggle="dropdown" aria-expanded="false">
                             {{ Auth::user()->name }}
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="{{ route('home') }}">Dashboard</a></li>
-                            <li><a class="dropdown-item" href="{{ route('requests.index') }}">Requests</a></li>
+                            <li><a class="dropdown-item" href="{{ route('requests.index') }}">Your Requests</a></li>
+                            <li><a class="dropdown-item" href="{{ route('doctor.requests.index') }}">Patients Requests</a></li>
                             <li><a class="dropdown-item" role="button" href="#" data-bs-toggle="modal"
                                     data-bs-target="#logout-modal">Logout</a></li>
                         </ul>
