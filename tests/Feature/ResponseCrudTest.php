@@ -51,7 +51,5 @@ class ResponseCrudTest extends TestCase
 
         $this->assertEquals(1, $request->response()->count());
 
-
-
     }
 }

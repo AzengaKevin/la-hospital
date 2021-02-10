@@ -49,4 +49,5 @@ Route::resource('requests', 'RequestController')
 Route::group(['middleware' => ['auth', 'can:act-as-a-doctor'], 'prefix' => 'doctor', 'as' => 'doctor.', 'namespace' => 'Doctor'], function () {
     Route::resource('requests', 'RequestsController')
         ->except('create', 'store');
+    Route::resource('requests.responses', 'RequestResponseController');
 });

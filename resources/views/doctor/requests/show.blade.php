@@ -13,7 +13,7 @@
         <h6 class="fw-bold">Action Center</h6>
 
         <div class="d-flex ">
-            <a href="" class="btn btn-primary">Respond</a>
+            <a href="{{ route('doctor.requests.responses.index', $request) }}" class="btn btn-primary">Responses</a>
 
             <form class="ms-3" action="{{ route('doctor.requests.destroy', $request) }}" method="post">
                 @csrf
