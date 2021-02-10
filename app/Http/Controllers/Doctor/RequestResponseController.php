@@ -24,24 +24,28 @@ class RequestResponseController extends Controller
      * Store A new Request Response
      */
     public function store(\App\Models\Request $request)
-    {
-        
+    {        
         $data = request()->validate([
             'type' => ['bail', 'required', Rule::in(Response::types())],
             'description' => ['bail', 'required'],
             'appointment' => ['bail', 'array', Rule::requiredIf($request->type == 'Appointment')],
-            'appointment.address' => ['bail', 'max:64' , Rule::requiredIf($request->type == 'Appointment')],
-            'appointment.date' => ['bail', Rule::requiredIf($request->type == 'Appointment')],
-            'appointment.time' => ['bail', 'string', Rule::requiredIf($request->type == 'Appointment')],
-            'appointment.subject' => ['bail', 'string', 'max:64', Rule::requiredIf($request->type == 'Appointment')],
-            'appointment.cost' => ['bail', 'numeric', Rule::requiredIf($request->type == 'Appointment')],
-            'prescription' => ['bail', 'nullable', 'array', Rule::requiredIf($request->type == 'Prescription')],
-            'prescription.tablets' => ['bail', 'string', Rule::requiredIf($request->type == 'Prescription')],
-            'prescription.cost' => ['bail', 'numeric', Rule::requiredIf($request->type == 'Prescription')],
-            'prescription.chemists' => ['bail', 'string', Rule::requiredIf($request->type == 'Prescription')],
+            'appointment.address' => ['bail', 'nullable', 'max:64' , Rule::requiredIf($request->type == 'Appointment')],
+            'appointment.date' => ['bail', 'nullable', Rule::requiredIf($request->type == 'Appointment')],
+            'appointment.time' => ['bail', 'nullable', 'string', Rule::requiredIf($request->type == 'Appointment')],
+            'appointment.subject' => ['bail', 'nullable', 'string', 'max:64', Rule::requiredIf($request->type == 'Appointment')],
+            'appointment.cost' => ['bail', 'nullable', 'numeric', Rule::requiredIf($request->type == 'Appointment')],
+            'prescription' => ['bail', 'nullable', 'nullable', 'array', Rule::requiredIf($request->type == 'Prescription')],
+            'prescription.tablets' => ['bail', 'nullable', 'string', Rule::requiredIf($request->type == 'Prescription')],
+            'prescription.cost' => ['bail', 'nullable', 'numeric', Rule::requiredIf($request->type == 'Prescription')],
+            'prescription.chemists' => ['bail', 'nullable', 'string', Rule::requiredIf($request->type == 'Prescription')],
         ]);
 
-        info('Responses Data: ' . $data);
+        if($request->type == 'Prescription') unset($data['appointment']);
+        if($request->type == 'Appointment') unset($data['prescription']);
+
+        array_values($data);
+
+        info($data);
         
         $request->response()->create($data);
 

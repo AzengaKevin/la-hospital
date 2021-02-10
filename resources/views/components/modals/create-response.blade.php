@@ -34,7 +34,8 @@
                     @enderror
                 </div>
 
-                <fieldset class="mt-3" x-show=" responseType=='Appointment'">
+                <fieldset class="mt-3" x-show="responseType =='Appointment'"
+                    x-bind.disabled="responseType !='Appointment'">
                     <legend>Appointment</legend>
 
                     @error('appointment.*')
@@ -44,41 +45,47 @@
                     @enderror
 
                     <div class="form-group row">
-                        <label class="col-md-2 col-form-label text-md-end fw-bold" for="address">Address</label>
+                        <label class="col-md-3 col-form-label text-md-end fw-bold" for="address">Address</label>
                         <div class="col-md-8">
-                            <input type="text" name="appointment[address]" id="address" class="form-control">
+                            <input type="text" name="appointment[address]" id="address" class="form-control"
+                                x-bind.disabled="responseType !='Appointment'">
                         </div>
                     </div>
                     <div class="form-group row mt-3">
-                        <label class="col-md-2 col-form-label text-md-end fw-bold" for="date">Date</label>
+                        <label class="col-md-3 col-form-label text-md-end fw-bold" for="date">Date</label>
                         <div class="col-md-8">
-                            <input type="date" name="appointment[date]" id="date" class="form-control">
-                        </div>
-                    </div>
-
-                    <div class="form-group row mt-3">
-                        <label class="col-md-2 col-form-label text-md-end fw-bold" for="time">Time</label>
-                        <div class="col-md-8">
-                            <input type="time" name="appointment[time]" id="time" class="form-control">
+                            <input type="date" name="appointment[date]" id="date" class="form-control"
+                                x-bind.disabled="responseType !='Appointment'">
                         </div>
                     </div>
 
                     <div class="form-group row mt-3">
-                        <label class="col-md-2 col-form-label text-md-end fw-bold" for="subject">Subject</label>
+                        <label class="col-md-3 col-form-label text-md-end fw-bold" for="time">Time</label>
                         <div class="col-md-8">
-                            <input type="text" name="appointment[subject]" id="subject" class="form-control">
+                            <input type="time" name="appointment[time]" id="time" class="form-control"
+                                x-bind.disabled="responseType !='Appointment'">
                         </div>
                     </div>
 
                     <div class="form-group row mt-3">
-                        <label class="col-md-2 col-form-label text-md-end fw-bold" for="cost">Cost</label>
+                        <label class="col-md-3 col-form-label text-md-end fw-bold" for="subject">Subject</label>
                         <div class="col-md-8">
-                            <input type="number" name="appointment[cost]" step="0.01" id="cost" class="form-control">
+                            <input type="text" name="appointment[subject]" id="subject" class="form-control"
+                                x-bind.disabled="responseType !='Appointment'">
+                        </div>
+                    </div>
+
+                    <div class="form-group row mt-3">
+                        <label class="col-md-3 col-form-label text-md-end fw-bold" for="cost">Cost</label>
+                        <div class="col-md-8">
+                            <input type="number" name="appointment[cost]" step="0.01" id="cost" class="form-control"
+                                x-bind.disabled="responseType !='Appointment'">
                         </div>
                     </div>
                 </fieldset>
 
-                <fieldset class="mt-3" x-show="responseType == 'Prescription'">
+                <fieldset class="mt-3" x-show="responseType == 'Prescription'"
+                    x-bind.disabled="responseType !='Prescription'">
                     <legend>Prescription</legend>
 
                     @error('prescription.*')
@@ -88,23 +95,23 @@
                     @enderror
 
                     <div class="form-group row">
-                        <label for="tablets" class="col-md-2 col-form-label fw-bold text-md-end">Tablets</label>
+                        <label for="tablets" class="col-md-3 col-form-label fw-bold text-md-end">Tablets</label>
                         <div class="col-md-8">
-                            <input type="text" name="prescription[tablets]" id="tablets" class="form-control">
+                            <input type="text" name="prescription[tablets]" id="tablets" class="form-control" x-bind.disabled="responseType !='Prescription'">
                         </div>
                     </div>
                     <div class="form-group row mt-3">
-                        <label for="tablets" class="col-md-2 col-form-label fw-bold text-md-end">Cost</label>
+                        <label for="tablets" class="col-md-3 col-form-label fw-bold text-md-end">Cost</label>
                         <div class="col-md-8">
                             <input type="number" step="0.01" name="prescription[cost]" id="tablets"
-                                class="form-control">
+                                class="form-control" x-bind.disabled="responseType !='Prescription'">
                         </div>
                     </div>
                     <div class="form-group row mt-3">
-                        <label for="chemists" class="col-md-2 col-form-label fw-bold text-md-end">Chemistries</label>
+                        <label for="chemists" class="col-md-3 col-form-label fw-bold text-md-end">Chemistries</label>
                         <div class="col-md-8">
-                            <input type="text" step="0.01" name="prescription[cost]" id="chemists"
-                                class="form-control" placeholder="Chemistry 1, Chemistry 2">
+                            <input type="text" step="0.01" name="prescription[chemists]" id="chemists" class="form-control"
+                                placeholder="Chemistry 1, Chemistry 2" x-bind.disabled="responseType !='Prescription'">
                         </div>
                     </div>
 

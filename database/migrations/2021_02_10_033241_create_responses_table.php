@@ -19,7 +19,7 @@ class CreateResponsesTable extends Migration
             $table->foreignId('request_id')->constraied()->onDelete('cascade');
             $table->enum('type', Response::types());
             $table->mediumText('description');
-            $table->boolean('agreed')->default();
+            $table->boolean('agreed')->default(false);
             $table->json('appointment')->nullable();
             $table->json('prescription')->nullable();
             $table->timestamps();
