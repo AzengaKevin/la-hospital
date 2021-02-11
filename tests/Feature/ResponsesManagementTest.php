@@ -107,4 +107,45 @@ class ResponsesManagementTest extends TestCase
         $response->assertRedirect(route('doctor.requests.responses.index', $request));
         
     }
+
+    /** @group responses */
+    public function test_a_doctor_can_delete_a_response()
+    {
+        //Arrange 
+        $this->withoutExceptionHandling();
+
+        //Create user and the request
+        $patientData = Patient::factory()->make()->toArray();
+        $patient = Patient::create($patientData);
+        $userData = array_merge(User::factory()->make()->toArray(), ['password' => bcrypt('pa$$word')]);
+        $patient->user()->create($userData);
+
+        //Create the request
+        $request = $patient->user->requests()->create([
+            'doctor_id' => $this->doctor->id,
+            'description' => 'Some Illness description'
+        ]);
+
+        $res = $request->response()->create([
+            'type' => Response::types()[random_int(0,1)],
+            'description' => 'Something about the upatients condition',
+            'appointment' => [
+                'venue' => 'St. Bourneventure San Jose Hospital',
+                'date' => '15/02/2021',
+                'time' => '10:00 AM',
+                'subject' => 'What is the appointent for',
+                'cost' => 1500
+            ]
+        ]);
+
+        $this->assertEquals(1, $request->response()->count());
+
+        //Act
+        $response = $this->delete(route('doctor.requests.responses.destroy', ['request' => $request, 'response' => $res]));
+
+        //Assert
+        $this->assertEquals(0, $request->response()->count());
+
+        $response->assertRedirect(route('doctor.requests.responses.index', $request));        
+    }
 }

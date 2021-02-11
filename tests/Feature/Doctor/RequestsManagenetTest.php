@@ -58,6 +58,8 @@ class RequestsManagenetTest extends TestCase
 
         $response = $this->get(route('doctor.requests.show', $request));
 
+        $this->assertTrue(boolval($request->fresh()->read));
+
         $response->assertOk();
 
         $response->assertViewIs('doctor.requests.show');

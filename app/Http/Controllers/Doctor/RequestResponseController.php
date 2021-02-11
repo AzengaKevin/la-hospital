@@ -40,16 +40,27 @@ class RequestResponseController extends Controller
             'prescription.chemists' => ['bail', 'nullable', 'string', Rule::requiredIf($request->type == 'Prescription')],
         ]);
 
-        if($request->type == 'Prescription') unset($data['appointment']);
-        if($request->type == 'Appointment') unset($data['prescription']);
+        if($data['type'] === 'Prescription')
+            if(array_key_exists('appointment', $data))
+                unset($data['appointment']);
+
+        if($data['type'] === 'Appointment')
+            if(array_key_exists('prescription', $data))
+                unset($data['prescription']);
 
         array_values($data);
 
-        info($data);
-        
         $request->response()->create($data);
 
-        info('Responses: ' . $request->response()->count());
+        return redirect()->route('doctor.requests.responses.index', $request);
+    }
+
+    /** 
+     * Deleting a response record from the database
+     */
+    public function destroy(\App\Models\Request $request, Response $response)
+    {
+        $response->delete();
 
         return redirect()->route('doctor.requests.responses.index', $request);
     }

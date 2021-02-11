@@ -29,6 +29,9 @@ class RequestsController extends Controller
      */
     public function show(\App\Models\Request $request)
     {
+        //Update the the admin has read the request
+        $request->update(['read' => true]);
+        
         return view('doctor.requests.show', compact('request'));
     }
 

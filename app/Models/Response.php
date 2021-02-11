@@ -9,7 +9,7 @@ class Response extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['request_id', 'type' ,'description', 'appointment'];
+    protected $fillable = ['request_id', 'type' ,'description', 'appointment', 'prescription'];
 
     protected $casts = [
         'appointment' => 'array', 

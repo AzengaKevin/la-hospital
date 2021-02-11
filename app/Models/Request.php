@@ -33,6 +33,6 @@ class Request extends Model
      */
     public function response()
     {
-        return $this->hasMany(Response::class);
+        return $this->hasMany(Response::class)->latest();
     }
 }

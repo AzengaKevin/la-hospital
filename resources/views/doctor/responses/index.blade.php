@@ -45,7 +45,11 @@
                                 class="btn btn-sm btn-primary ms-2">
                                 <i class="fa fa-eye"></i>
                             </a>
-                            <form action="" class="ms-2">
+                            <form
+                                action="{{ route('doctor.requests.responses.destroy', ['request' => $request, 'response' => $response]) }}"
+                                method="POST" class="ms-2">
+                                @csrf
+                                @method('DELETE')
                                 <button class="btn btn-sm btn-danger">
                                     <i class="fa fa-trash-alt"></i>
                                 </button>

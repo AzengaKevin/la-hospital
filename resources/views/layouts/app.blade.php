@@ -47,7 +47,6 @@
                             {{ Auth::user()->name }}
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="{{ route('home') }}">Dashboard</a></li>
                             <li><a class="dropdown-item" href="{{ route('requests.index') }}">Your Requests</a></li>
                             @can('act-as-a-doctor')
                             <li><a class="dropdown-item" href="{{ route('doctor.requests.index') }}">Patients
