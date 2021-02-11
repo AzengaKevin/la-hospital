@@ -71,8 +71,30 @@
         </div>
     </nav>
 </header>
-<div>
+<div class="min-h-screen">
     @yield('main')
 </div>
+<footer class="bg-light text-center">
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-md-4 text-muted">
+                <x-logo height="48" />
+                Copyright &copy; All rights reserved
+            </div>
+            <div class="col-md-4 ">
+                <h4 class="fw-bold">Pages</h4>
+
+                <div><a class="text-decoration-none text-muted" href="{{ route('about') }}">Home</a></div>
+                <div><a class="text-decoration-none text-muted" href="{{ route('about') }}">About</a></div>
+                <div><a class="text-decoration-none text-muted" href="{{ route('contact') }}">Contact</a></div>
+            </div>
+            <div class="col-md-4">
+                <h4 class="fw-bold">Resources</h4>
+
+                <div><a class="text-decoration-none text-muted" href="{{ route('doctors.index') }}">Doctors</a></div>                
+            </div>
+        </div>
+    </div>
+</footer>
 <x-modals.logout />
 @endsection

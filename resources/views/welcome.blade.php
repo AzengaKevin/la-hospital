@@ -4,13 +4,13 @@
 <div id="homepage-carousel-ctrls" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img class="d-block w-100 object-fit" src="{{ asset('/img/lab.jpg') }}" height="663" alt="First slide">
+            <img class="d-block w-100 object-fit" src="{{ asset('/img/nurse.jpg') }}" height="663" alt="First slide">
         </div>
         <div class="carousel-item">
-            <img class="d-block w-100 object-fit" src="{{ asset('/img/aparatus.jpg') }}" height="663" alt="Second slide">
+            <img class="d-block w-100 object-fit" src="{{ asset('/img/toolbox.jpg') }}" height="663" alt="Second slide">
         </div>
         <div class="carousel-item">
-            <img class="d-block w-100 object-fit" src="{{ asset('/img/balance-diet.jpg') }}" height="663" alt="Third slide">
+            <img class="d-block w-100 object-fit" src="{{ asset('/img/utils.jpg') }}" height="663" alt="Third slide">
         </div>
     </div>
     <a class="carousel-control-prev" href="#homepage-carousel-ctrls" role="button" data-bs-slide="prev">
