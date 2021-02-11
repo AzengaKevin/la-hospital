@@ -47,6 +47,9 @@
                             {{ Auth::user()->name }}
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            @can('act-as-admin')
+                            <li><a class="dropdown-item" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+                            @endcan
                             <li><a class="dropdown-item" href="{{ route('requests.index') }}">Your Requests</a></li>
                             @can('act-as-a-doctor')
                             <li><a class="dropdown-item" href="{{ route('doctor.requests.index') }}">Patients

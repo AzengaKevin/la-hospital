@@ -53,3 +53,8 @@ Route::group(['middleware' => ['auth', 'can:act-as-a-doctor'], 'prefix' => 'doct
 
 Route::resource('contacts', 'ContactController')
     ->only('store');
+
+Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], function () {
+    Route::get('dashboard', DashboardController::class)->name('dashboard');
+    Route::resource('contacts', 'ContactController');
+});
