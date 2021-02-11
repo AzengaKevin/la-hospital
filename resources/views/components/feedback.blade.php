@@ -9,4 +9,10 @@
         </ul>
     </div>
     @endif
+
+    @if (session()->has('message'))
+    <div class="alert alert-success text-start" role="alert">
+        {{ session('message') }}
+    </div>
+    @endif
 </div>

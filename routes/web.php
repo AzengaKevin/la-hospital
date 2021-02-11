@@ -50,3 +50,6 @@ Route::group(['middleware' => ['auth', 'can:act-as-a-doctor'], 'prefix' => 'doct
         ->except('create', 'store');
     Route::resource('requests.responses', 'RequestResponseController');
 });
+
+Route::resource('contacts', 'ContactController')
+    ->only('store');
