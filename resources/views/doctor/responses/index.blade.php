@@ -38,13 +38,6 @@
                     <td>{{ $response->agreed ? 'Agreed' : 'Not Yet' }}</td>
                     <td class="">
                         <div class="d-inline-flex justify-content-center">
-                            <a href="" class="btn btn-sm btn-secondary">
-                                <i class="fa fa-edit"></i>
-                            </a>
-                            <a href="{{ route('doctor.requests.responses.show', ['request' => $request , 'response' =>$response]) }}"
-                                class="btn btn-sm btn-primary ms-2">
-                                <i class="fa fa-eye"></i>
-                            </a>
                             <form
                                 action="{{ route('doctor.requests.responses.destroy', ['request' => $request, 'response' => $response]) }}"
                                 method="POST" class="ms-2">

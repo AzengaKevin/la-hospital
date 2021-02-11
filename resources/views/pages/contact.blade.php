@@ -10,13 +10,13 @@
     <div class="d-flex flex-column flex-lg-row">
         <!-- Embedded contact map -->
         <div>
-            <iframe class="rounded shadow"
+            <iframe class="rounded shadow w-100"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2958.709737684041!2d34.78177205997248!3d-0.6919373586684242!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182b3f6840164ff1%3A0x8040e0d2e546b570!2sKisii%20University%20Main%20Campus!5e0!3m2!1ssw!2ske!4v1612866973667!5m2!1ssw!2ske"
                 width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
                 tabindex="0"></iframe>
         </div>
         <!-- Contact Form -->
-        <div class="flex-grow-1 ms-0 ms-lg-5">
+        <div class="flex-grow-1 ms-0 mt-4 mt-lg-0 ms-lg-5">
             <h3 class="fw-bold">Get In Touch With Us</h3>
 
             <form action="">

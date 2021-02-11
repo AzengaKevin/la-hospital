@@ -8,7 +8,7 @@
     <h1 class="fw-bold h4 text-muted">Your Requests</h1>
 
     <div class="table-responsive">
-        <table class="table text-center">
+        <table class="table table-striped">
             <thead>
                 <th>ID</th>
                 <th>Doctor</th>
@@ -47,8 +47,9 @@
                 </tr>
                 @endforeach
                 @else
-                <tr class="py-2">
-                    <td colspan="6"><span>No Requests Made Yet !, <a href="{{ route('requests.create') }}">Create One
+                <tr>
+                    <td class="py-3 text-center" colspan="7"><span>No Requests Made Yet !, <a
+                                href="{{ route('requests.create') }}">Create One
                                 Now</a></span></td>
                 </tr>
                 @endif
