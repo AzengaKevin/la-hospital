@@ -9,7 +9,7 @@ class Doctor extends Model
 {
     use HasFactory; 
 
-    protected $fillable = ['availability', 'education', 'experience', 'speciality'];
+    protected $fillable = ['availability', 'education', 'experience', 'speciality', 'verified'];
 
     /**
      * Doctor speciality options

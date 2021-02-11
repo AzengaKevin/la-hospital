@@ -12,5 +12,8 @@
         <li class="nav-item">
             <a href="{{ route('admin.contacts.index') }}" class="nav-link text-white">Contacts</a>
         </li>
+        <li class="nav-item">
+            <a href="{{ route('admin.doctors.index') }}" class="nav-link text-white">Doctors</a>
+        </li>
     </ul>
 </nav>

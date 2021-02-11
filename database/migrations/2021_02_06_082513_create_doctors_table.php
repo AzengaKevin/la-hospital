@@ -20,6 +20,7 @@ class CreateDoctorsTable extends Migration
             $table->json('education')->nullable();
             $table->json('experience')->nullable();
             $table->enum('speciality', Doctor::specialityOptions());
+            $table->boolean('verified')->default(false);
             $table->timestamps();
         });
     }

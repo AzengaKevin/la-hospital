@@ -56,5 +56,8 @@ Route::resource('contacts', 'ContactController')
 
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], function () {
     Route::get('dashboard', DashboardController::class)->name('dashboard');
-    Route::resource('contacts', 'ContactController');
+    Route::resource('contacts', 'ContactController')
+        ->only('index', 'show', 'destroy');
+    Route::resource('doctors', 'DoctorController')
+        ->only('index', 'update');
 });

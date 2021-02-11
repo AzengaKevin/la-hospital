@@ -1,7 +1,8 @@
 @extends('layouts.dashboard')
 
 @section('main')
-<div class="table-responsive">
+<h4 class="fw-bold">Contacts</h4>
+<div class="table-responsive mt-3">
     <table class="table table-striped">
         <thead>
             <th>#</th>
@@ -38,8 +39,8 @@
             </tr>
             @endforeach
             @else
-            <tr colspan="6">
-
+            <tr>
+                <td colspan="6">No, Contacs made yet</td>
             </tr>
             @endif
         </tbody>
